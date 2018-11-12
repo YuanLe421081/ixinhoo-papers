@@ -1,0 +1,57 @@
+server:
+  contextPath : /
+  port : 18080
+  session-timeout: 60
+
+logging:
+  level:
+    org.springframework.web : ERROR
+    com.cnjy21.api : ERROR
+    com.ixinhoo : INFO
+    root : INFO
+  file : logs/papers.log
+  pattern:
+    file : logs/%d{yyyy-MM-dd}/%d{yyyy-MM-dd}.log
+  path : ../logs/papers
+
+
+jdbc:
+  driverClassName : org.mariadb.jdbc.Driver
+#  url : jdbc:mariadb://localhost:3306/papers?useSSL=false&useUnicode=true&autoReconnect=true
+#  url : jdbc:mariadb://120.79.133.136:3306/papers?useUnicode=true&autoReconnect=true
+  url : jdbc:mariadb://120.79.133.136:3306/papers_sync?useUnicode=true&autoReconnect=true
+#  url : jdbc:mariadb://120.79.133.136:3306/papers_sync?useUnicode=true&autoReconnect=true
+#  url : jdbc:mariadb://localhost:3306/papers_test?useUnicode=true&autoReconnect=true
+#  url : jdbc:mariadb://120.79.133.136:3306/papers_test?useUnicode=true&autoReconnect=true
+  username : root
+  password : papers@2018
+
+
+mapper:
+  mappers : com.chunecai.crumbs.api.dao.BaseDao
+  style : camelhumpAndLowercase
+#  notEmpty : true
+
+spring:
+  aop:
+    proxy-target-class : true
+
+redis:
+#  host: 120.79.133.136
+  host: 127.0.0.1
+  port: 22000
+  password:
+
+des:
+  key: 2018paperscicipaperscicipaperscici
+
+qiniu:
+  accessKey: q1bzLkiMjfI6eqh-2Qs0yc-IRBHdKCr09KJXVMu9
+  secretKey: W2dcZW3Qhsfi7hJxV8YiFXEpYNBnlLYaZECodbMM
+  bucket: papers
+  bucketPrivate: papers-private
+  fileUrl: http://p8q2cwwvt.bkt.clouddn.com
+  filePrivateUrl: http://p8rfrlnwg.bkt.clouddn.com
+
+local:
+  url: http://120.79.133.136:18080
